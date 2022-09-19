@@ -115,6 +115,7 @@ function make_slides(f) {
       // (by default, the selection of the radio persists across trials)
       $("input[name='number']:checked").prop("checked", false);
       $("#check-strange").prop("checked", false);
+      $("#trial_comments").val("");
       // store stimulus data
       this.stim = stim;
 
