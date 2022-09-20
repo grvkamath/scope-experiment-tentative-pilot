@@ -25,8 +25,8 @@ function make_slides(f) {
       // read in the value of the selected radio button
       this.radio = $("input[name='number']:checked").val();
       this.comments = $("#i0comments").val();
-      // check whether the participant selected a reasonable value (i.e, 5, 6, or 7)
-      if (this.radio == "5" || this.radio == "6" || this.radio == "7") {
+      // check whether the participant selected a reasonable value (i.e, 1, 2, or 3)
+      if (this.radio == "1" || this.radio == "2" || this.radio == "3") {
         // log response
         this.log_responses();
         // continue to next slide
@@ -64,7 +64,7 @@ function make_slides(f) {
     // handle button click
     button: function() {
       this.radio = $("input[name='number']:checked").val();
-      if (this.radio == "1" || this.radio == "2" || this.radio == "3") {
+      if (this.radio == "5" || this.radio == "6" || this.radio == "7") {
         this.log_responses();
         exp.go();
       } else {
@@ -120,8 +120,8 @@ function make_slides(f) {
       this.stim = stim;
 
       // extract original and sentence with "but not all"
-      var original_sentence = stim.EntireSentence;
-      var target_sentence = stim.ButNotAllSentence;
+      var original_sentence = stim.sentence;
+      var target_sentence = stim.followup;
 
       //handle display of context 
       // if (exp.condition == "context") {
@@ -140,7 +140,7 @@ function make_slides(f) {
       $("#trial-originalSen").html(original_sentence);
       $("#trial-targetSen").html(target_sentence);
       $(".err").hide();
-      $('.comment_err').hide()
+      $('.comment_err').hide();
 
     },
 
@@ -150,14 +150,20 @@ function make_slides(f) {
       this.strange = $("#check-strange:checked").val() === undefined ? 0 : 1;
       this.comments = $("#trial_comments").val();
       if (this.radio) {
-        if (this.comments != '') {
+        if (this.radio > 3) {
         this.log_responses();
         // exp.go(); //use exp.go() if and only if there is no "present"ed data, ie no list of stimuli.
         _stream.apply(this); //use _stream.apply(this) if there is a list of "present" stimuli to rotate through
         
         } else{
-        $('.err').hide()
-        $('.comment_err').show()
+        $('.err').hide();
+        if (this.comments == '') {
+          $('.comment_err').show();
+        } else{
+          $('.comment_err').hide();
+          this.log_responses();
+          _.stream.apply(this);
+        }
         }        
       } else {
         $('.err').show();
@@ -167,12 +173,19 @@ function make_slides(f) {
     // save response
     log_responses: function() {
       exp.data_trials.push({
-        "id": this.stim.TGrep,
-        "sentence": this.stim.ButNotAllSentence,
+        "idx": this.stim.idx,
+        "sentence": this.stim.sentence, 
+        "followup": this.stim.followup,
+        "stype": this.stim.stype,
+        "ftype": this.stim.ftype,
+        "wide": this.stim.wide,
+        "OP1_type": this.stim.OP1_type,
+        "OP2_type": this.stim.OP2_type,
+        "OP1": this.stim.OP1,
+        "OP2": this.stim.OP2,
         "slide_number_in_experiment": exp.phase, //exp.phase is a built-in trial number tracker
         "response": this.radio,
-        "strangeSentence": this.strange,
-        "comments": this.comments
+        "comments": this.comments,
       });
     },
   });
@@ -221,7 +234,7 @@ function init() {
   exp.catch_trials = [];
   var stimuli = all_stims;
 
-  exp.stimuli = stimuli; //call _.shuffle(stimuli) to randomize the order;
+  exp.stimuli = _.sample(stimuli); //call _.shuffle(stimuli) to randomize the order;
   exp.n_trials = exp.stimuli.length;
 
   // exp.condition = _.sample(["context", "no-context"]); //can randomize between subjects conditions here

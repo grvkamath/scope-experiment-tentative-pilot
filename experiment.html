@@ -36,10 +36,10 @@
     <!-- initial slide -->
     <div class="slide" id="i0">
       <p class="left">
-        You will read some sentences, along with possible follow-ups. <strong>Your task is to give your opinion on how normal-sounding
-          each follow-up is.</strong><br>
+        You will read some sentences, along with possible continuations. <strong>Your task is to give your opinion on how normal-sounding
+          each continuation is.</strong><br>
         <br>
-        The experiment will take approximately 10 minutes. Let's start with two examples!
+        The experiment will take approximately 15 minutes. Let's start with two examples!
       </p><button id="start_button" type="button">Start experiment</button>
       <p class="left legal">
         <strong><br>
@@ -57,13 +57,13 @@
         Example 1
       </h3>
       <p class="sentence" style="color:darkorange">
-        I met with one of my best friends today...
+        While totally sober, I crashed my car today...
       </p>
       <p class="followup" style="color:darkblue">
         but I don't know which one.
       </p>
       <div class="instruction">
-        <i>How normal-sounding is the phrase in blue as a follow-up to sentence in orange?</i>
+        <i>How normal-sounding is the phrase in blue as a continuation to the phrase in orange?</i>
       </div>
       <table class="likertscale">
         <tr>
@@ -122,16 +122,16 @@
         </tr>
       </table><br>
       <br>
-      <p>
-        (Optional) If the follow-up sounds weird, why?:
-      </p>
-      <textarea id="i0comments" rows="3" cols="50"></textarea><br>
+      
       <div class="center">
         <button class="continueButton" onclick="_s.button()">Continue</button>
       </div>
       <div class="err">
         <p>
-          In your rating, consider whether the sentence 'some, but not all' expresses the same thing as the red sentence. In this example the two sentences are very similar.
+          In your rating, consider whether <b>'but I don't know which one'</b> is 
+          a normal continuation to <b>'While totally sober, I crashed my car today...'</b>. Here, it would seem 
+          odd for a person to say that they don't know which car they crashed, when they crashed it just the 
+          previous day while sober. Try giving this continuation another rating.
         </p>
       </div>
     </div>
@@ -142,18 +142,18 @@
         Example 2
       </h3>
       <p class="originalSen">
-        There's probably some peanuts in the pantry.
+        I didn't have a meeting with a saleswoman today...
       </p>
       <p class="targetSen">
-        There's probably <b>some, but not all</b> peanuts in the pantry.
+        because she was busy with something else.
       </p>
       <div class="instruction">
-        <i>How similar is the statement in blue (with 'but not all') to the statement in red (without 'but not all')?</i>
+        <i>How normal-sounding is the phrase in blue as a continuation to the phrase in orange?</i>
       </div>
       <table class="likertscale">
         <tr>
           <td>
-            very different meaning
+            sounds completely abnormal
           </td>
           <td>
             <input type="radio" name="number" value="1">
@@ -177,7 +177,7 @@
             <input type="radio" name="number" value="7">
           </td>
           <td>
-            same meaning
+            sounds completely normal
           </td>
         </tr>
         <tr>
@@ -213,7 +213,10 @@
       <div class="err">
         <br>
         <p>
-          In your rating, consider whether the sentence 'some, but not all' expresses the same thing as the red sentence. In this example the two sentences are very different.
+          In your rating, consider whether <b>'because she was busy with something else'</b> is 
+          a normal continuation to <b>'I didn't have a meeting with a saleswoman today...'</b>. Here, the speaker
+          could have a specific saleswoman in mind when uttering the original phrase, which would make 
+          the continuation sound fairly normal. Try giving this continuation another rating.
         </p>
       </div>
     </div>
@@ -223,7 +226,9 @@
       <br>
       <br>
       <p id="instruct-text" class="left">
-        Great! Now we can start the real experiment. You will now read 20 sentences. Your task is to rate how similar the red sentence is to the blue sentence where the word 'some' is replaced with 'some, but not all'. Sometimes, the blue sentence will sound strange. In this case, give a rating to the best of your ability, but also click the checkbox next to "The blue sentence sounds strange".
+        Great! Now we can start the real experiment. You will now read roughly 20 sentences. 
+        Your task is to rate how normal each phrase in blue is as a continuation to each phrase in orange.
+        If you find a continuation to be abnormal, explain (in as few words as you'd like) why it sounds abnormal.
       </p>
       <div class="center">
         <button class="continueButton" onclick="_s.button()">Continue</button>
@@ -244,7 +249,7 @@
         {{target sentence}}
       </p>
       <div class="instruction">
-        <i>How normal does the phrase in blue sound as a follow-up to the sentence in orange?</i>
+        <i>How normal does the phrase in blue sound as a continuation to the sentence in orange?</i>
       </div>
       <table class="likertscale">
         <tr>
@@ -304,13 +309,13 @@
       </table><br>
       
       <p>
-        If you found the follow-up to be weird, why?
+        If you found the continuation to be weird, why?
       </p>
       <textarea id="trial_comments" rows="3" cols="50"></textarea><br>
       <div class="comment_err">
         <br>
         <p>
-          type something in!
+          Be sure to explain (in as few words as you'd like) why you found the continuation abnormal!
         </p>
       </div>
       <div class="center">
@@ -319,7 +324,7 @@
       <div class="err">
         <br>
         <p>
-          Make sure you selected a rating before clicking 'Continue'
+          Make sure to select a rating before clicking 'Continue'!
         </p>
       </div>
     </div>
