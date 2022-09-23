@@ -17,24 +17,30 @@ function make_slides(f) {
     // this is executed when the slide is shown
     start: function() {
       // hide error message
-      $('.err').hide();
+      $('.badrating_err').hide();
+      $('.norating_err').hide();
     },
 
     // this is executed when the participant clicks the "Continue button"
     button: function() {
       // read in the value of the selected radio button
       this.radio = $("input[name='number']:checked").val();
-      this.comments = $("#i0comments").val();
       // check whether the participant selected a reasonable value (i.e, 1, 2, or 3)
-      if (this.radio == "1" || this.radio == "2" || this.radio == "3") {
-        // log response
-        this.log_responses();
-        // continue to next slide
-        exp.go();
+      if (this.radio){
+        if (this.radio == "1" || this.radio == "2" || this.radio == "3") {
+          // log response
+          this.log_responses();
+          // continue to next slide
+          exp.go();
+        } else {
+          // participant gave non-reasonable response --> show error message
+          $('.norating_err').hide();
+          $('.badrating_err').show();
+        }
       } else {
-        // participant gave non-reasonable response --> show error message
-        $('.err').show();
-        this.log_responses();
+        $('.badrating_err').hide()
+        $('.norating_err').show();
+      
       }
     },
 
@@ -45,9 +51,7 @@ function make_slides(f) {
         "slide_number_in_experiment": exp.phase,
         "id": "example1",
         "response": this.radio,
-        "strangeSentence": "",
-        "sentence": "",
-        "comments": this.comments,
+        
       });
     },
   });
@@ -58,18 +62,28 @@ function make_slides(f) {
 
     start: function() {
       // hide error message
-      $(".err").hide();
+      $(".badrating_err").hide();
+      $(".norating_err").hide();
     },
 
     // handle button click
     button: function() {
       this.radio = $("input[name='number']:checked").val();
-      if (this.radio == "5" || this.radio == "6" || this.radio == "7") {
-        this.log_responses();
-        exp.go();
+      if (this.radio){
+        if (this.radio == "5" || this.radio == "6" || this.radio == "7") {
+          // log response
+          this.log_responses();
+          // continue to next slide
+          exp.go();
+        } else {
+          // participant gave non-reasonable response --> show error message
+          $('.norating_err').hide();
+          $('.badrating_err').show();
+        }
       } else {
-        $('.err').show();
-        this.log_responses();
+        $('.badrating_err').hide();
+        $('.norating_err').show();
+        
       }
     },
 
@@ -78,8 +92,7 @@ function make_slides(f) {
         "slide_number_in_experiment": exp.phase,
         "id": "example2",
         "response": this.radio,
-        "strangeSentence": "",
-        "sentence": "",
+        
       });
     }
   });
@@ -147,25 +160,19 @@ function make_slides(f) {
     // handle click on "Continue" button
     button: function() {
       this.radio = $("input[name='number']:checked").val();
-      this.strange = $("#check-strange:checked").val() === undefined ? 0 : 1;
       this.comments = $("#trial_comments").val();
       if (this.radio) {
-        if (this.radio > 3) {
-        this.log_responses();
-        // exp.go(); //use exp.go() if and only if there is no "present"ed data, ie no list of stimuli.
-        _stream.apply(this); //use _stream.apply(this) if there is a list of "present" stimuli to rotate through
-        
-        } else{
-        $('.err').hide();
-        if (this.comments == '') {
-          $('.comment_err').show();
-        } else{
+        if (this.comments != '') {
           $('.comment_err').hide();
           this.log_responses();
           _.stream.apply(this);
+        
+        } 
+        else{
+          $('.comment_err').show();
         }
         }        
-      } else {
+      else {
         $('.err').show();
       }
     },
@@ -227,6 +234,11 @@ function make_slides(f) {
   return slides;
 }
 
+/// for random sample
+function random_item(items){ 
+  return items[Math.floor(Math.random()*items.length)];    
+}
+
 /// initialize experiment
 function init() {
 
@@ -234,7 +246,7 @@ function init() {
   exp.catch_trials = [];
   var stimuli = all_stims;
 
-  exp.stimuli = _.sample(stimuli); //call _.shuffle(stimuli) to randomize the order;
+  exp.stimuli = random_item(stimuli); //call _.shuffle(stimuli) to randomize the order;
   exp.n_trials = exp.stimuli.length;
 
   // exp.condition = _.sample(["context", "no-context"]); //can randomize between subjects conditions here

@@ -39,7 +39,7 @@
         You will read some sentences, along with possible continuations. <strong>Your task is to give your opinion on how normal-sounding
           each continuation is.</strong><br>
         <br>
-        The experiment will take approximately 15 minutes. Let's start with two examples!
+        The experiment will take approximately 20 minutes. Let's start with two examples!
       </p><button id="start_button" type="button">Start experiment</button>
       <p class="left legal">
         <strong><br>
@@ -126,7 +126,12 @@
       <div class="center">
         <button class="continueButton" onclick="_s.button()">Continue</button>
       </div>
-      <div class="err">
+      <div class="norating_err">
+        <p>
+          Make sure to select a rating before clicking 'Continue'! 
+        </p>
+      </div>
+      <div class="badrating_err">
         <p>
           In your rating, consider whether <b>'but I don't know which one'</b> is 
           a normal continuation to <b>'While totally sober, I crashed my car today...'</b>. Here, it would seem 
@@ -141,10 +146,10 @@
       <h3>
         Example 2
       </h3>
-      <p class="originalSen">
+      <p class="sentence" style="color:darkorange">
         I didn't have a meeting with a saleswoman today...
       </p>
-      <p class="targetSen">
+      <p class="followup" style="color:darkblue">
         because she was busy with something else.
       </p>
       <div class="instruction">
@@ -210,7 +215,12 @@
       <div class="center">
         <button class="continueButton" onclick="_s.button()">Continue</button>
       </div>
-      <div class="err">
+      <div class="norating_err">
+        <p>
+          Make sure to select a rating before clicking 'Continue'! 
+        </p>
+      </div>
+      <div class="badrating_err">
         <br>
         <p>
           In your rating, consider whether <b>'because she was busy with something else'</b> is 
@@ -228,7 +238,7 @@
       <p id="instruct-text" class="left">
         Great! Now we can start the real experiment. You will now read roughly 20 sentences. 
         Your task is to rate how normal each phrase in blue is as a continuation to each phrase in orange.
-        If you find a continuation to be abnormal, explain (in as few words as you'd like) why it sounds abnormal.
+        For each continuation, explain (in as few words as you'd like) why it sounds normal or abnormal.
       </p>
       <div class="center">
         <button class="continueButton" onclick="_s.button()">Continue</button>
@@ -309,13 +319,13 @@
       </table><br>
       
       <p>
-        If you found the continuation to be weird, why?
+        Why do you think the continuation was normal or abnormal?
       </p>
       <textarea id="trial_comments" rows="3" cols="50"></textarea><br>
       <div class="comment_err">
         <br>
         <p>
-          Be sure to explain (in as few words as you'd like) why you found the continuation abnormal!
+          Be sure to explain (in as few words as you'd like) why you found the continuation normal or abnormal!
         </p>
       </div>
       <div class="center">
