@@ -64,6 +64,7 @@ function make_slides(f) {
       // hide error message
       $('.badrating_err').hide();
       $('.norating_err').hide();
+      $("input[name='number']:checked").prop("checked", false);
     },
 
     // handle button click
