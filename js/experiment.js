@@ -38,7 +38,7 @@ function make_slides(f) {
           $('.badrating_err').show();
         }
       } else {
-        $('.badrating_err').hide()
+        $('.badrating_err').hide();
         $('.norating_err').show();
       
       }
@@ -62,13 +62,15 @@ function make_slides(f) {
 
     start: function() {
       // hide error message
-      $(".badrating_err").hide();
-      $(".norating_err").hide();
+      $('.badrating_err').hide();
+      $('.norating_err').hide();
     },
 
     // handle button click
     button: function() {
+      // read in the value of the selected radio button
       this.radio = $("input[name='number']:checked").val();
+      // check whether the participant selected a reasonable value (i.e, 5, 6, or 7)
       if (this.radio){
         if (this.radio == "5" || this.radio == "6" || this.radio == "7") {
           // log response
@@ -83,7 +85,7 @@ function make_slides(f) {
       } else {
         $('.badrating_err').hide();
         $('.norating_err').show();
-        
+      
       }
     },
 
@@ -162,10 +164,11 @@ function make_slides(f) {
       this.radio = $("input[name='number']:checked").val();
       this.comments = $("#trial_comments").val();
       if (this.radio) {
+        $('.err').hide()
         if (this.comments != '') {
           $('.comment_err').hide();
           this.log_responses();
-          _.stream.apply(this);
+          _stream.apply(this);
         
         } 
         else{
