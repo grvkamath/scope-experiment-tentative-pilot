@@ -166,15 +166,8 @@ function make_slides(f) {
       this.comments = $("#trial_comments").val();
       if (this.radio) {
         $('.err').hide()
-        if (this.comments != '') {
-          $('.comment_err').hide();
-          this.log_responses();
-          _stream.apply(this);
-        
-        } 
-        else{
-          $('.comment_err').show();
-        }
+        this.log_responses();
+        _stream.apply(this);
         }        
       else {
         $('.err').show();

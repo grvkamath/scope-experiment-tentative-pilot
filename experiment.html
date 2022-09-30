@@ -36,19 +36,14 @@
     <!-- initial slide -->
     <div class="slide" id="i0">
       <p class="left">
-        You will read some sentences, along with possible continuations. <strong>Your task is to give your opinion on how normal-sounding
+        <strong>We're conducting an experiment to see whether language AI systems produce natural-sounding continuations to certain kinds of phrases and sentences.</strong>
+        In order to make such a judgment we need to first establish a baseline of what are and aren't natural-sounding continuations, using human assessments. 
+        This is where you, the experiment-taker, come in.
+        You will read some sentences, along with possible continuations. <strong>Your task is to give your opinion on how natural-sounding
           each continuation is.</strong><br>
         <br>
-        The experiment will take approximately 20 minutes. Let's start with two examples!
+        The experiment will take approximately 15 minutes. Let's start with two examples!
       </p><button id="start_button" type="button">Start experiment</button>
-      <p class="left legal">
-        <strong><br>
-        <br>
-        <br>
-        LEGAL INFORMATION</strong>:<br>
-        <br>
-        IF APPLICABLE, MAKE SURE TO INCLUDE YOUR IRB CONSENT FORM HERE.
-      </p>
     </div>
 
     <!-- first example slide -->
@@ -63,12 +58,12 @@
         but I don't know which one.
       </p>
       <div class="instruction">
-        <i>How normal-sounding is the phrase in blue as a continuation to the phrase in orange?</i>
+        <i> Generally speaking, how natural-sounding is the phrase in blue as a continuation to the phrase in orange?</i>
       </div>
       <table class="likertscale">
         <tr>
           <td>
-            sounds completely abnormal
+            sounds completely unnatural
           </td>
           <td>
             <input type="radio" name="number" value="1">
@@ -92,7 +87,7 @@
             <input type="radio" name="number" value="7">
           </td>
           <td>
-            sounds completely normal  
+            sounds completely natural  
           </td>
         </tr>
         <tr>
@@ -134,9 +129,9 @@
       <div class="badrating_err">
         <p>
           In your rating, consider whether <b>'but I don't know which one'</b> is 
-          a normal continuation to <b>'While totally sober, I crashed my car today...'</b>. Here, it would seem 
-          odd for a person to say that they don't know which car they crashed, when they crashed it just the 
-          previous day while sober. Try giving this continuation another rating.
+          a natural continuation to <b>'While totally sober, I crashed my car today...'</b>. Here, it would seem 
+          odd for a person to say that they don't know which car they crashed, when they crashed it the 
+          same day while sober. Try giving this continuation another rating.
         </p>
       </div>
     </div>
@@ -153,12 +148,12 @@
         because she was busy with something else.
       </p>
       <div class="instruction">
-        <i>How normal-sounding is the phrase in blue as a continuation to the phrase in orange?</i>
+        <i>Generally speaking, how natural-sounding is the phrase in blue as a continuation to the phrase in orange?</i>
       </div>
       <table class="likertscale">
         <tr>
           <td>
-            sounds completely abnormal
+            sounds completely unnatural
           </td>
           <td>
             <input type="radio" name="number" value="1">
@@ -182,7 +177,7 @@
             <input type="radio" name="number" value="7">
           </td>
           <td>
-            sounds completely normal
+            sounds completely natural
           </td>
         </tr>
         <tr>
@@ -224,9 +219,9 @@
       <div class="badrating_err">
         <p>
           In your rating, consider whether <b>'because she was busy with something else'</b> is 
-          a normal continuation to <b>'I didn't have a meeting with a saleswoman today...'</b>. Here, the speaker
+          a natural continuation to <b>'I didn't have a meeting with a saleswoman today...'</b>. Here, the speaker
           could have a specific saleswoman in mind when uttering the original phrase, which would make 
-          the continuation sound fairly normal. Try giving this continuation another rating.
+          the continuation sound fairly natural. Try giving this continuation another rating.
         </p>
       </div>
     </div>
@@ -237,8 +232,8 @@
       <br>
       <p id="instruct-text" class="left">
         Great! Now we can start the real experiment. You will now read roughly 20 sentences. 
-        Your task is to rate how normal each phrase in blue is as a continuation to each phrase in orange.
-        For each continuation, explain (in as few words as you'd like) why it sounds normal or abnormal.
+        Your task is to rate how natural each phrase in blue is as a continuation to each phrase in orange.
+        For each continuation, you have the option (if you'd like—it would help us, but isn't mandatory) to explain, in as few words as you'd like, why it sounds natural or unnatural.
       </p>
       <div class="center">
         <button class="continueButton" onclick="_s.button()">Continue</button>
@@ -259,7 +254,7 @@
         {{target sentence}}
       </p>
       <div class="instruction">
-        <i>How normal does the phrase in blue sound as a continuation to the sentence in orange?</i>
+        <i>Generally speaking, how natural does the phrase in blue sound as a continuation to the sentence in orange?</i>
       </div>
       <table class="likertscale">
         <tr>
@@ -288,7 +283,7 @@
             <input type="radio" name="number" value="7">
           </td>
           <td>
-            sounds completely normal
+            sounds completely natural
           </td>
         </tr>
         <tr>
@@ -319,16 +314,16 @@
       </table><br>
       
       <p>
-        Why do you think the continuation was normal or abnormal?
+        (Optional) Why do you think the continuation was natural or unnatural?
       </p>
       <textarea id="trial_comments" rows="3" cols="50"></textarea><br>
       <div class="comment_err">
         <br>
         <p>
-          Be sure to explain (in as few words as you'd like) why you found the continuation normal or abnormal!
+          Be sure to explain (in as few words as you'd like) why you found the continuation natural or unnatural!
         </p>
       </div>
-      <div class="center">
+      <div class="center"> 
         <button class="continueButton" onclick="_s.button()">Continue</button>
       </div>
       <div class="err">
@@ -349,7 +344,7 @@
           Answering these questions is optional, but will help us understand your answers.
         </p>
         <p>
-          Did you read the instructions and do you think you did the HIT correctly?
+          Did you read the instructions and do you think you did the experiment correctly?
         </p><label><input type="radio" name="assess" value="No">No</label> <label><input type="radio" name="assess" value="Yes">Yes</label> <label><input type="radio" name="assess" value="Confused">I was confused</label>
         <p>
           Gender: <select id="gender">
